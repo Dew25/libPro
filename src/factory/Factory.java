@@ -16,16 +16,21 @@ import java.util.ResourceBundle;
 public class Factory {
     private final static ResourceBundle conf = ResourceBundle.getBundle("resourses.config");
     public static Persistent getPersistent(){
-        if("databases".equals(conf.getString("save"))){
-            return new ORMPersistentImpl();
-        }if("files".equals(conf.getString("save"))){
-            return new FilesPersistentImpl();
-        }else{
-             return new FilesPersistentImpl();
+        String key = conf.getString("save");
+        Persistent p = null;
+        switch (key) {
+            case "databases":
+                p = new ORMPersistentImpl();
+                break;
+            case "files":
+                p = new FilesPersistentImpl();
+                break;
+            default:
+                p = new ORMPersistentImpl();
         }
-        
+        return p;
     }
-    
+        
     public static ModifyEntity getEditable(){
         return new ConcoleModifyEntityImpl();
     }

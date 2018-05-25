@@ -22,7 +22,7 @@ import interfaces.ModifyEntity;
  *
  * @author jvm
  */
-public class App {
+public class ConsoleApp {
     
     private final Persistent p = Factory.getPersistent();
     private final ModifyEntity me = Factory.getEditable();

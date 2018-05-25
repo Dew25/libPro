@@ -20,8 +20,9 @@ public class LibPro {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Получаем значение view из текстоврого файла по пути 
-        // src/resourses/config.properties
+        // Получаем значение view из текстового конфигурационного файла
+        // который расположен в проекте: src/resourses/config.properties
+        // или в сборке: classes/resourses/config.properties
         String view = conf.getString("view");
         // запускаем приложение в зависимости от установленной сонфигурации
         switch (view) {
@@ -30,11 +31,11 @@ public class LibPro {
                 formApp.run();
                 break;
             case "console":
-                App app = new App();
-                app.run();
+                ConsoleApp consoleApp = new ConsoleApp();
+                consoleApp.run();
                 break;
             default:
-                new App().run();
+                new ConsoleApp().run();
         }
         
         
